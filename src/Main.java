@@ -25,7 +25,7 @@ public class Main {
     }
 
     public static void showMenu(Scanner scanner) {
-        System.out.println("********** PESSOAS **********");
+        System.out.println("********** MENU **********");
         System.out.println("1 - Pessoas");
         System.out.println("2 - Doações");
         System.out.println("3 - Sair");
@@ -37,7 +37,7 @@ public class Main {
     }
 
     public static void handle(int option, Scanner scanner) {
-        PersonMenu personMenu = new PersonMenu(personService);
+        PersonMenu personMenu = new PersonMenu(personService, donationService);
         DonationMenu donationMenu = new DonationMenu(donationService);
 
         switch (option) {

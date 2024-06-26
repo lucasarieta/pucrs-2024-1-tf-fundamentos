@@ -43,12 +43,12 @@ public class Person {
     }
 
     public String toString() {
-        return "Name: " + name + "\nDocument: " + document + "\nEmail: " + email + "\nPhone: " + phone + "\nDonations: " + donations;
+        return "Nome: " + name + "\nCPF: " + document + "\nEmail: " + email + "\nTelefone: " + phone + "\nDonations: " + donations  + "\n";
     }
 
     public void addDonation(String donationCode, double amount) {
         this.donations += donationCode + " - " + amount + "x\n";
 
-        System.out.println("Donation added: " + donationCode + " - " + amount);
+        System.out.println("Doação adicionada: " + donationCode + " - " + amount);
     }
 }

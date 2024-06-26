@@ -39,6 +39,6 @@ public class Donation {
     }
 
     public String toString() {
-        return "Code: " + code + "\nName: " + name + "\nAmount: " + amount;
+        return "Code: " + code + "\nName: " + name + "\nAmount: " + amount + "\n";
     }
 }

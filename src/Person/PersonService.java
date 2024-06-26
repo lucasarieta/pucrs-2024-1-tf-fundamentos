@@ -14,7 +14,8 @@ public class PersonService {
 
     public void create(String name, String document, String email, String phone) {
         if (this.hasSomeoneWithTheSameDocument(document)) {
-            throw new IllegalArgumentException("Já existe alguem com este CPF.");
+            System.out.println("Já existe uma pessoa com este CPF.");
+            return;
         }
 
         Person person = new Person(name, document, email, phone);
@@ -25,8 +26,14 @@ public class PersonService {
         return people.stream().anyMatch(person -> person.getDocument().equals(document));
     }
 
-    public List<Person> getPeople() {
-        return people;
+    public String getPeople() {
+        StringBuilder people = new StringBuilder();
+
+        for (Person person : this.people) {
+            people.append(person.toString());
+        }
+
+        return people.toString();
     }
 
     public Optional<Person> getByDocument(String document) {

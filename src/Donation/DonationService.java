@@ -12,11 +12,13 @@ public class DonationService {
 
     public void create(String code, String name, int amount) {
         if (this.isDonationCodeAlreadyInUse(code)) {
-            throw new IllegalArgumentException("Já existe uma doação com este código.");
+            System.out.println("Já existe uma doação com este código.");
+            return;
         }
 
         if (this.isDonationNameAlreadyInUse(name)) {
-            throw new IllegalArgumentException("Já existe uma doação com este nome.");
+            System.out.println("Já existe uma doação com este nome.");
+            return;
         }
 
         Donation donation = new Donation(code, name, amount);
@@ -39,7 +41,8 @@ public class DonationService {
         Donation donation = donations.stream().filter(d -> d.getCode().equals(code)).findFirst().orElse(null);
 
         if (donation == null) {
-            throw new IllegalArgumentException("Doação não encontrada.");
+            System.out.println("Doação não encontrada.");
+            return;
         }
 
         donation.setAmount(donation.getAmount() + amount);
@@ -49,7 +52,8 @@ public class DonationService {
         Donation donation = donations.stream().filter(d -> d.getCode().equals(code)).findFirst().orElse(null);
 
         if (donation == null) {
-            throw new IllegalArgumentException("Doação não encontrada.");
+            System.out.println("Doação não encontrada.");
+           return;
         }
 
         donation.setAmount(donation.getAmount() - amount);
@@ -57,5 +61,9 @@ public class DonationService {
 
     public List<Donation> searchDonationsByAmount(int amount) {
         return donations.stream().filter(donation -> donation.getAmount() >= amount).toList();
+    }
+
+    public boolean canAddDonation(String donationCode, int donationAmount) {
+        return donations.stream().noneMatch(donation -> donation.getCode().equals(donationCode) && donation.getAmount() >= donationAmount);
     }
 }

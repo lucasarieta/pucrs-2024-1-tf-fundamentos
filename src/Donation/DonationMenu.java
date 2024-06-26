@@ -12,7 +12,7 @@ public class DonationMenu {
     }
 
     public void show(Scanner scanner) {
-        System.out.println("********** MENU **********");
+        System.out.println("********** DOAÇÕES **********");
         System.out.println("1 - Criar uma nova doação");
         System.out.println("2 - Listar doação pelo nome");
         System.out.println("3 - Adicionar quantidade à doação");
@@ -73,6 +73,10 @@ public class DonationMenu {
         String name = scanner.nextLine();
 
         Donation donation = this.donationService.searchByName(name);
+        if (donation == null) {
+            System.out.println("Doação não encontrada.");
+            return;
+        }
 
         System.out.println(donation.toString());
     }
